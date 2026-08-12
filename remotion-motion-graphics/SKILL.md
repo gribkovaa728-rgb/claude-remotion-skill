@@ -76,10 +76,18 @@ If full Chrome errors with "Old Headless mode has been removed", use a
 `chromium_headless_shell-*/chrome-linux/headless_shell`).
 
 ### Step 5 — VERIFY (mandatory, never skip)
-Extract frames at key moments and visually inspect each one:
+Extract frames at key moments and visually inspect each one. The portable
+method — works on machines with no system ffmpeg, renders the exact frame:
 ```bash
-ffmpeg -v error -i out/video.mp4 -vf "select='eq(n\,15)+eq(n\,45)+eq(n\,90)+eq(n\,N-10)'" \
-  -vsync 0 check_%d.png
+for f in 15 45 90 150; do
+  npx remotion still src/index.ts <CompId> out/check_$f.png --frame $f --overwrite
+done
+```
+If system ffmpeg IS available, extracting from the finished mp4 also verifies
+the encode itself (`-ss` seeking is more portable than `select=` filters, whose
+quoting breaks in some shells and in Remotion's bundled ffmpeg):
+```bash
+ffmpeg -v error -ss 1.5 -i out/video.mp4 -frames:v 1 check_1.png
 ```
 Look for, and fix, in order of frequency:
 - **Spacing bugs**: `gap`/`margin` in `em` resolves against the PARENT font-size
@@ -111,6 +119,15 @@ speech, see the captions section of `references/motion-patterns.md`.
 - `assets/theme.ts` — the theme template to copy into every project.
 
 ## Common failure modes to actively avoid
+- **Emoji as icons.** Emoji render as full-color platform glyphs (green ✳️,
+  blue 🌐) that ignore your palette and silently break the one-hero-color rule,
+  and they sit on whatever background you gave them (orange mascot on orange
+  tile = invisible). Draw glyphs with CSS/SVG in theme colors, or verify every
+  emoji against the extracted frames.
+- **No SFX assets is not a reason to ship silent.** Synthesize a minimal kit as
+  16-bit WAVs from a Node script (noise-burst whoosh, pitch-drop pop, sine-thump
+  kick/bass, detuned-sine pad) into `public/sfx/` — see `examples/scripts/` in
+  the repo. Zero downloads, fully deterministic.
 - Generating one giant component instead of themed, reusable pieces.
 - `durationInFrames` mismatch between Composition and scene content (dead air).
 - Forgetting `--overwrite` on re-renders, then inspecting the stale file.
