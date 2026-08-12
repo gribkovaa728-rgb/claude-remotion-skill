@@ -81,9 +81,9 @@ cp -r claude-remotion-skill/remotion-motion-graphics .claude/skills/
 
 **Claude Desktop / Claude.ai:** upload `remotion-motion-graphics.skill` in **Settings → Capabilities → Skills**.
 
-**Verify it worked:** ask Claude *"make me a 3 second logo sting"* — it should read the skill first (you'll see it load `remotion-motion-graphics`) and end by extracting and inspecting frames before delivering. If it ships a render without looking at frames, the skill isn't loaded.
+**Verify it worked:** ask Claude *"make me a 3 second logo sting"*. It should read the skill before writing any code, and it should extract and inspect frames before delivering. A render shipped without frame checks means the skill is not loaded.
 
-**Update later:** `git pull` in your clone, then re-copy the folder (and re-upload the `.skill` file on Desktop).
+**Update later:** run `git pull` in your clone, then copy the folder again (on Desktop, re-upload the `.skill` file).
 
 ## 🎯 Usage
 
@@ -109,15 +109,21 @@ Claude reads the skill, applies the motion rules, renders with Remotion, extract
 9. One `theme.ts` — no inline colors or easings
 10. Render → inspect frames → fix → re-render. Never ship unverified.
 
-## 📁 Examples
+## Examples
 
-[`examples/`](examples/) is a complete Remotion project with **four finished compositions built with this skill** — a profile promo, a warm app promo with a code-drawn pixel-art mascot, a "watch this video fix itself" rule-by-rule demo, and a beat-synced code edit with a synthesized soundtrack. Each one shipped only after the render → inspect → fix loop. Clone, `npm install`, and render any of them:
+[`examples/`](examples/) is a Remotion project with four finished compositions built with this skill: a profile promo, the Focus Cat app promo, a "watch this video fix itself" demo where the motion rules apply themselves one by one, and a beat-synced code edit with a synthesized 120 BPM track. Each shipped only after the render, inspect frames, fix, re-render loop.
+
+Here is the Focus Cat promo, 15.5 seconds, with a pixel-art mascot drawn in code. Click it for the MP4 with sound:
+
+[![Focus Cat promo, made with this skill](examples/videos/focus-cat.gif)](https://github.com/haidrrrry/claude-remotion-skill/raw/main/examples/videos/focus-cat-promo.mp4)
+
+The other three render from source in a few minutes:
 
 ```bash
 cd examples
 npm install
-node scripts/gen-sfx.mjs && node scripts/gen-track.mjs   # synthesize the audio (no asset files needed)
-npx remotion render src/index.ts SelfFix out/self-fix.mp4 --codec h264 --crf 16
+npm run audio            # synthesize the SFX and music, no asset files needed
+npm run render:selffix   # or render:codeedit / render:profile / render:focuscat
 ```
 
 ## 🤝 Contributing
