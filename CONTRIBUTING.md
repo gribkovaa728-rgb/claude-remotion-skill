@@ -4,9 +4,9 @@ This is an active, open-source project — contributions welcome. 🙌
 
 ## Ways to help
 
-- **New motion patterns** — add a reusable component to `remotion-motion-graphics/references/motion-patterns.md`.
-- **New palettes / type / pacing** — extend `remotion-motion-graphics/references/design-rules.md`.
-- **Theme presets** — improve `remotion-motion-graphics/assets/theme.ts`.
+- **New motion patterns** — add a reusable component to `.claude/skills/remotion-motion-graphics/references/motion-patterns.md`.
+- **New palettes / type / pacing** — extend `.claude/skills/remotion-motion-graphics/references/design-rules.md`.
+- **Theme presets** — improve `.claude/skills/remotion-motion-graphics/assets/theme.ts`.
 - **Docs & examples** — clearer install steps, usage recipes, demo clips.
 - **Bug fixes** — broken rules, wrong code, typos.
 
@@ -23,7 +23,7 @@ This is an active, open-source project — contributions welcome. 🙌
 - Keep it framework-true: real Remotion + TypeScript, no pseudo-code.
 - One concern per PR.
 - If you add a pattern, show it actually renders.
-- If you touch anything under `remotion-motion-graphics/`, run
+- If you touch anything under `.claude/skills/remotion-motion-graphics/`, run
   `scripts/build-skill.sh` so the `.skill` Desktop artifact stays in sync.
 
 Questions or ideas? Open an issue. New contributors and first PRs are encouraged.

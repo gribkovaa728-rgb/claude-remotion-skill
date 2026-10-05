@@ -53,7 +53,7 @@ Those generate pixels and hallucinate. This produces *deterministic, editable, b
 ## 📦 What's inside
 
 ```
-remotion-motion-graphics/
+.claude/skills/remotion-motion-graphics/
 ├── SKILL.md                    # Workflow + 10 non-negotiable motion rules
 ├── references/
 │   ├── motion-patterns.md      # 17 copy-paste components (reveals, grade, grain,
@@ -69,14 +69,14 @@ remotion-motion-graphics/
 ```bash
 git clone https://github.com/haidrrrry/claude-remotion-skill.git
 mkdir -p ~/.claude/skills
-cp -r claude-remotion-skill/remotion-motion-graphics ~/.claude/skills/
+cp -r claude-remotion-skill/.claude/skills/remotion-motion-graphics ~/.claude/skills/
 ```
 
 **Claude Code (per-project — share with your team):**
 ```bash
 git clone https://github.com/haidrrrry/claude-remotion-skill.git
 mkdir -p .claude/skills
-cp -r claude-remotion-skill/remotion-motion-graphics .claude/skills/
+cp -r claude-remotion-skill/.claude/skills/remotion-motion-graphics .claude/skills/
 ```
 
 **Claude Desktop / Claude.ai:** upload `remotion-motion-graphics.skill` in **Settings → Capabilities → Skills**.
