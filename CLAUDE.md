@@ -7,3 +7,11 @@
 `.claude/skills/remotion-motion-graphics/SKILL.md`** и следуй его правилам и workflow.
 Справочники лежат рядом: `references/motion-patterns.md`, `references/design-rules.md`,
 `assets/theme.ts`.
+
+## Субтитры и транскрипция
+
+Для любых задач с субтитрами, транскрипцией или расшифровкой речи из аудио и видео
+(.srt, караоке-субтитры, тайминги слов) **сначала прочитай
+`.claude/skills/whisper-transcription/SKILL.md`** и следуй ему. По умолчанию язык русский,
+модель `small`, результат сохраняется в `.srt` и `.json` с таймингами слов. Если субтитры
+потом накладываются на видео, дальше работай по навыку `remotion-motion-graphics`.
